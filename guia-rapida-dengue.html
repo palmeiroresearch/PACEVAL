@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Rápida - Monitor Dengue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f9fafb;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #dc2626;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        h2 {
+            color: #991b1b;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 24px;
+            border-bottom: 2px solid #fecaca;
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: #374151;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        p {
+            color: #4b5563;
+            margin-bottom: 15px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .step {
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #dc2626;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .warning strong {
+            color: #856404;
+        }
+
+        .info {
+            background: #e0f2fe;
+            border-left: 4px solid #0284c7;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .signs-list {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .signs-list ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .signs-list li {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: white;
+            border-left: 3px solid #dc2626;
+            border-radius: 5px;
+        }
+
+        .signs-list li:before {
+            content: "⚠️ ";
+            margin-right: 8px;
+        }
+
+        .tips {
+            background: #d1fae5;
+            border-left: 4px solid #059669;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .tips strong {
+            color: #065f46;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        ul li {
+            color: #4b5563;
+            margin-bottom: 8px;
+        }
+
+        .feature-box {
+            display: inline-block;
+            background: #fef2f2;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            color: #dc2626;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏥 Monitor Dengue - Guía Rápida</h1>
+        <p><strong>Aplicación para monitoreo de pacientes con dengue con signos de alarma</strong></p>
+
+        <div class="section">
+            <h2>🚀 Inicio Rápido</h2>
+            
+            <div class="step">
+                <span class="step-number">1</span>
+                <strong>Agregar Paciente:</strong> Click en "➕ Nuevo Paciente" → Llenar datos → Guardar
+            </div>
+
+            <div class="step">
+                <span class="step-number">2</span>
+                <strong>Realizar Chequeo:</strong> En la tarjeta del paciente → "✅ Chequear" → Marcar signos → Agregar notas → Guardar
+            </div>
+
+            <div class="step">
+                <span class="step-number">3</span>
+                <strong>Ver Historia:</strong> Click en "📋 Historia" → Revisar todos los chequeos → "📄 Generar Informe"
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚠️ Signos de Alarma del Dengue</h2>
+            <p>La aplicación monitorea los 8 signos de alarma principales:</p>
+
+            <div class="signs-list">
+                <ul>
+                    <li><strong>Dolor abdominal intenso y continuo</strong> - No cede con analgésicos</li>
+                    <li><strong>Vómitos persistentes</strong> - Que impiden hidratación oral</li>
+                    <li><strong>Acumulación de líquidos</strong> - Ascitis, derrame pleural o pericárdico</li>
+                    <li><strong>Sangrado de mucosas</strong> - Epistaxis, gingivorragia, melena, metrorragia</li>
+                    <li><strong>Letargia o irritabilidad</strong> - Cambios en el estado de conciencia</li>
+                    <li><strong>Hepatomegalia >2cm</strong> - Palpable bajo reborde costal</li>
+                    <li><strong>Aumento del Hto con caída de plaquetas</strong> - Hemoconcentración</li>
+                    <li><strong>Hipotensión postural (lipotimia)</strong> - Mareo o síncope al incorporarse</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Interpretación de la Interfaz</h2>
+
+            <h3>Tarjetas de Pacientes</h3>
+            <ul>
+                <li><strong>Fondo blanco:</strong> Paciente sin signos de alarma en último chequeo</li>
+                <li><strong>Fondo rojo claro + badge "⚠️ ALERTA":</strong> Paciente con signos de alarma</li>
+            </ul>
+
+            <h3>Badges de Tiempo</h3>
+            <ul>
+                <li><strong>Verde "✓ Al día":</strong> Chequeo reciente (< 80% del intervalo)</li>
+                <li><strong>Amarillo "⚠ Próximo":</strong> Se acerca el tiempo de chequeo</li>
+                <li><strong>Rojo "⚠ Vencido":</strong> Se pasó el tiempo del chequeo programado</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>💡 Mejores Prácticas</h2>
+
+            <div class="tips">
+                <strong>✅ Recomendaciones:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Realizar chequeos en el horario establecido</li>
+                    <li>Ser específico en las notas (PA, FC, Tax, diuresis, etc.)</li>
+                    <li>Revisar las alertas de chequeos vencidos cada hora</li>
+                    <li>Generar informes al final del turno para continuidad</li>
+                    <li>Exportar datos periódicamente como respaldo</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>⚠️ Importante:</strong>
+                <ul style="margin-top: 10px;">
+                    <li>Esta herramienta es de apoyo, NO sustituye el juicio clínico</li>
+                    <li>Los datos se guardan SOLO en tu dispositivo</li>
+                    <li>Se eliminan automáticamente después de 48 horas sin actualización</li>
+                    <li>Hacer backup exportando datos si necesitas conservarlos más tiempo</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📝 Ejemplo de Notas Efectivas</h2>
+
+            <h3>❌ Nota pobre:</h3>
+            <p style="color: #dc2626; font-style: italic;">"Paciente estable"</p>
+
+            <h3>✅ Nota completa:</h3>
+            <p style="color: #059669; font-style: italic;">"PA: 110/70 mmHg, FC: 82 lpm, Tax: 37.2°C. Tolera líquidos vía oral. Diuresis 400ml en 4h (color amarillo claro). Plaquetas: 85,000. Hto: 42% (previo 40%). Sin dolor abdominal. Está alerta y orientado."</p>
+        </div>
+
+        <div class="section">
+            <h2>🔧 Funcionalidades Adicionales</h2>
+
+            <h3>Tab "📊 Estadísticas"</h3>
+            <p>Muestra resumen de todos los pacientes y frecuencia de cada signo de alarma detectado en el turno.</p>
+
+            <h3>Botón "📥 Exportar"</h3>
+            <p>Descarga un archivo JSON con todos los datos de los pacientes para backup o análisis posterior.</p>
+
+            <h3>Función Offline</h3>
+            <p>La aplicación funciona completamente sin internet después de la primera carga. Ideal para áreas con conectividad limitada.</p>
+        </div>
+
+        <div class="section">
+            <h2>⚙️ Intervalos de Monitoreo</h2>
+            <ul>
+                <li><strong>Cada 1 hora:</strong> Pacientes críticos o con múltiples signos de alarma</li>
+                <li><strong>Cada 2 horas:</strong> Estándar para monitoreo de fase crítica del dengue</li>
+                <li><strong>Cada 3-4 horas:</strong> Pacientes estables en observación</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>📱 Instalación como App</h2>
+            
+            <h3>En Android (Chrome/Edge):</h3>
+            <ol>
+                <li>Abrir dengue-monitor.html en el navegador</li>
+                <li>Menu (⋮) → "Agregar a pantalla de inicio"</li>
+                <li>Confirmar instalación</li>
+            </ol>
+
+            <h3>En iOS (Safari):</h3>
+            <ol>
+                <li>Abrir dengue-monitor.html en Safari</li>
+                <li>Botón Compartir (cuadrado con flecha) → "Agregar a inicio"</li>
+                <li>Confirmar</li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2>🆘 Solución de Problemas</h2>
+
+            <h3>Los datos no se guardan:</h3>
+            <ul>
+                <li>Verificar que el navegador permita almacenamiento local</li>
+                <li>No usar modo incógnito/privado</li>
+                <li>Verificar espacio disponible en el dispositivo</li>
+            </ul>
+
+            <h3>La app no funciona offline:</h3>
+            <ul>
+                <li>Asegurar que se haya cargado completamente al menos una vez con internet</li>
+                <li>Verificar que los Service Workers estén habilitados</li>
+                <li>Intentar reinstalar la PWA</li>
+            </ul>
+
+            <h3>Se perdieron los datos:</h3>
+            <ul>
+                <li>Los datos se eliminan automáticamente después de 48h sin actualización</li>
+                <li>Verificar que no se haya limpiado el almacenamiento del navegador</li>
+                <li>Verificar si hay un backup exportado previamente</li>
+            </ul>
+        </div>
+
+        <div class="info">
+            <strong>💻 Soporte Técnico:</strong><br>
+            Para problemas técnicos, revisar la consola del navegador (F12) para ver mensajes de error.
+            La aplicación guarda automáticamente cada cambio en el localStorage del navegador.
+        </div>
+
+        <div class="section" style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 2px solid #e5e7eb;">
+            <p style="color: #6b7280; font-size: 14px;">
+                <strong>Monitor Dengue</strong> - Herramienta educativa para práctica preprofesional<br>
+                Desarrollado para estudiantes de medicina y profesionales de salud<br>
+                Última actualización: Octubre 2025
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Función para imprimir la guía
+        function printGuide() {
+            window.print();
+        }
+
+        // Agregar botón de impresión si es necesario
+        window.addEventListener('DOMContentLoaded', () => {
+            const container = document.querySelector('.container');
+            const printBtn = document.createElement('button');
+            printBtn.textContent = '🖨️ Imprimir Guía';
+            printBtn.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #dc2626;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 25px;
+                font-weight: bold;
+                cursor: pointer;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                z-index: 1000;
+            `;
+            printBtn.addEventListener('click', printGuide);
+            printBtn.addEventListener('mouseover', () => {
+                printBtn.style.background = '#b91c1c';
+            });
+            printBtn.addEventListener('mouseout', () => {
+                printBtn.style.background = '#dc2626';
+            });
+            document.body.appendChild(printBtn);
+        });
+    </script>
+</body>
+</html>

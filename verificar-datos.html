@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificar Datos - Monitor Dengue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .info-box {
+            background: #f0f4ff;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .data-box {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            max-height: 500px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: bold;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #5568d3;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-success {
+            background: #10b981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #9ca3af;
+        }
+
+        .patient-list {
+            margin-top: 20px;
+        }
+
+        .patient-item {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+
+        .patient-name {
+            font-weight: bold;
+            color: #1f2937;
+            font-size: 16px;
+        }
+
+        .patient-details {
+            color: #6b7280;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔍 Verificador de Datos Guardados</h1>
+        
+        <div class="info-box">
+            <strong>📍 Ubicación:</strong> Los datos se guardan en localStorage del navegador con la clave <code>dengue_patients</code>
+        </div>
+
+        <div id="stats" class="stats">
+            <div class="stat-card">
+                <div class="stat-value" id="totalPatients">0</div>
+                <div class="stat-label">Pacientes Guardados</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="totalChecks">0</div>
+                <div class="stat-label">Chequeos Totales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="dataSize">0 KB</div>
+                <div class="stat-label">Tamaño de Datos</div>
+            </div>
+        </div>
+
+        <div id="content">
+            <div class="empty">
+                <p style="font-size: 48px;">📭</p>
+                <p>No hay datos guardados</p>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 20px;">
+            <button class="btn btn-primary" onclick="reload()">🔄 Actualizar</button>
+            <button class="btn btn-success" onclick="exportData()">📥 Exportar JSON</button>
+            <button class="btn btn-success" onclick="copyToClipboard()">📋 Copiar al Portapapeles</button>
+            <button class="btn btn-danger" onclick="deleteAllData()">🗑️ Borrar Todo</button>
+        </div>
+
+        <div style="margin-top: 30px; text-align: center;">
+            <a href="index-dengue.html" style="color: #667eea; text-decoration: none;">← Volver al inicio</a>
+        </div>
+    </div>
+
+    <script>
+        function loadData() {
+            const data = localStorage.getItem('dengue_patients');
+            const content = document.getElementById('content');
+            
+            if (!data) {
+                content.innerHTML = `
+                    <div class="empty">
+                        <p style="font-size: 48px;">📭</p>
+                        <p>No hay datos guardados</p>
+                        <p style="margin-top: 10px; font-size: 14px;">Usa la aplicación para agregar pacientes</p>
+                    </div>
+                `;
+                document.getElementById('totalPatients').textContent = '0';
+                document.getElementById('totalChecks').textContent = '0';
+                document.getElementById('dataSize').textContent = '0 KB';
+                return;
+            }
+
+            try {
+                const patients = JSON.parse(data);
+                
+                // Estadísticas
+                document.getElementById('totalPatients').textContent = patients.length;
+                
+                let totalChecks = 0;
+                patients.forEach(p => {
+                    totalChecks += p.checks ? p.checks.length : 0;
+                });
+                document.getElementById('totalChecks').textContent = totalChecks;
+                
+                const sizeKB = (new Blob([data]).size / 1024).toFixed(2);
+                document.getElementById('dataSize').textContent = sizeKB + ' KB';
+
+                // Mostrar pacientes
+                let html = '<div class="patient-list"><h3 style="margin-bottom: 15px;">Lista de Pacientes:</h3>';
+                patients.forEach((p, index) => {
+                    const lastCheck = p.lastCheck ? new Date(p.lastCheck).toLocaleString('es-ES') : 'Nunca';
+                    html += `
+                        <div class="patient-item">
+                            <div class="patient-name">${index + 1}. ${p.name}</div>
+                            <div class="patient-details">
+                                ID: ${p.id} | Edad: ${p.age} | Cama: ${p.bed} | 
+                                Chequeos: ${p.checks ? p.checks.length : 0} | 
+                                Último chequeo: ${lastCheck}
+                                ${p.hasAlerts ? ' | <span style="color: #dc2626; font-weight: bold;">⚠️ CON ALERTAS</span>' : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+
+                // Mostrar JSON
+                html += `
+                    <h3 style="margin-top: 30px; margin-bottom: 15px;">Datos Completos (JSON):</h3>
+                    <div class="data-box">${JSON.stringify(patients, null, 2)}</div>
+                `;
+
+                content.innerHTML = html;
+
+            } catch (e) {
+                content.innerHTML = `
+                    <div style="background: #fee; padding: 20px; border-radius: 10px; color: #c00;">
+                        <strong>❌ Error al leer los datos</strong><br>
+                        ${e.message}
+                    </div>
+                `;
+            }
+        }
+
+        function reload() {
+            location.reload();
+        }
+
+        function exportData() {
+            const data = localStorage.getItem('dengue_patients');
+            if (!data) {
+                alert('No hay datos para exportar');
+                return;
+            }
+
+            const blob = new Blob([data], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `backup-dengue-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function copyToClipboard() {
+            const data = localStorage.getItem('dengue_patients');
+            if (!data) {
+                alert('No hay datos para copiar');
+                return;
+            }
+
+            navigator.clipboard.writeText(data).then(() => {
+                alert('✅ Datos copiados al portapapeles');
+            }).catch(err => {
+                alert('❌ Error al copiar: ' + err);
+            });
+        }
+
+        function deleteAllData() {
+            if (!confirm('⚠️ ¿Estás COMPLETAMENTE SEGURO de que quieres BORRAR TODOS LOS DATOS?\n\nEsta acción NO se puede deshacer.\n\nSe perderán todos los pacientes y chequeos.')) {
+                return;
+            }
+
+            if (!confirm('🚨 ÚLTIMA CONFIRMACIÓN: ¿Realmente quieres borrar todos los datos?\n\nPresiona OK para borrar, Cancelar para mantener los datos.')) {
+                return;
+            }
+
+            localStorage.removeItem('dengue_patients');
+            alert('✅ Todos los datos han sido borrados');
+            location.reload();
+        }
+
+        // Cargar datos al iniciar
+        window.addEventListener('DOMContentLoaded', loadData);
+    </script>
+</body>
+</html>

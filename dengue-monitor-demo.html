@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Monitor Dengue</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #dc2626 0%, #991b1b 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-container {
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            color: #dc2626;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .demo-section {
+            margin-bottom: 30px;
+        }
+
+        .demo-section h2 {
+            color: #1f2937;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .demo-section p {
+            color: #4b5563;
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 12px;
+            margin-bottom: 8px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border-left: 4px solid #dc2626;
+            color: #374151;
+        }
+
+        .feature-list li strong {
+            color: #dc2626;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #dc2626;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(220, 38, 38, 0.2);
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-secondary:hover {
+            background: #e5e7eb;
+        }
+
+        .alert-box {
+            background: #fef2f2;
+            border: 2px solid #dc2626;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .alert-box h3 {
+            color: #dc2626;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .alert-box p {
+            color: #991b1b;
+            margin: 0;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);
+            border-radius: 10px;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: #dc2626;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .demo-container {
+                padding: 25px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .btn-container {
+                flex-direction: column;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <h1>🏥 Monitor Dengue</h1>
+        <p class="subtitle">Sistema de monitoreo para pacientes con signos de alarma</p>
+
+        <div class="alert-box">
+            <h3>⚕️ Versión Demo</h3>
+            <p>Esta es una demostración con datos de prueba precargados. Los datos se guardan localmente en tu dispositivo y persisten por 48 horas.</p>
+        </div>
+
+        <div class="demo-section">
+            <h2>📋 Características Principales</h2>
+            <ul class="feature-list">
+                <li><strong>Monitoreo Horario/Bihorario:</strong> Seguimiento continuo de 14-16 pacientes</li>
+                <li><strong>7 Signos de Alarma:</strong> Registro completo según protocolos de dengue</li>
+                <li><strong>Notas Clínicas:</strong> Campo de observaciones para cada chequeo</li>
+                <li><strong>Alertas Automáticas:</strong> Notificación de chequeos vencidos</li>
+                <li><strong>Informes Completos:</strong> Generación de reportes por paciente</li>
+                <li><strong>Funciona Offline:</strong> No requiere conexión a internet</li>
+            </ul>
+        </div>
+
+        <div class="demo-section">
+            <h2>📊 Datos Demo Incluidos</h2>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value">5</div>
+                    <div class="stat-label">Pacientes</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">2</div>
+                    <div class="stat-label">Con Alertas</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">15</div>
+                    <div class="stat-label">Chequeos</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>🚀 Primeros Pasos</h2>
+            <p><strong>1.</strong> Haz click en "Cargar Demo con Datos" para ver la aplicación con pacientes de ejemplo</p>
+            <p><strong>2.</strong> Explora las funcionalidades: agregar chequeos, ver historias, generar informes</p>
+            <p><strong>3.</strong> Cuando estés listo, usa "Iniciar App Limpia" para empezar con tus pacientes reales</p>
+        </div>
+
+        <div class="btn-container">
+            <button class="btn btn-primary" onclick="loadDemo()">
+                🎯 Cargar Demo con Datos
+            </button>
+            <button class="btn btn-secondary" onclick="loadClean()">
+                ✨ Iniciar App Limpia
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function loadDemo() {
+            // Crear datos de demostración
+            const now = new Date();
+            const demoPatients = [
+                {
+                    id: Date.now().toString(),
+                    name: "María García López",
+                    age: 28,
+                    sex: "F",
+                    bed: "Cama 12",
+                    monitoringInterval: 2,
+                    createdAt: new Date(now - 6 * 60 * 60 * 1000).toISOString(),
+                    lastCheck: new Date(now - 1.5 * 60 * 60 * 1000).toISOString(),
+                    initialNotes: "Paciente con fiebre alta desde hace 5 días, plaquetas en descenso",
+                    hasAlerts: true,
+                    checks: [
+                        {
+                            timestamp: new Date(now - 6 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Primera evaluación: PA 110/70, FC 88, Tax 38.5°C",
+                            hasAlerts: false
+                        },
+                        {
+                            timestamp: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
+                            signs: ["Vómitos persistentes"],
+                            notes: "Paciente refiere náuseas y vómitos x3 en las últimas 2h",
+                            hasAlerts: true
+                        },
+                        {
+                            timestamp: new Date(now - 2 * 60 * 60 * 1000).toISOString(),
+                            signs: ["Vómitos persistentes", "Dolor abdominal intenso y continuo"],
+                            notes: "Dolor abdominal aumentado, difuso. Se solicitó ecografía",
+                            hasAlerts: true
+                        },
+                        {
+                            timestamp: new Date(now - 1.5 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Mejoría tras analgesia. Tolera líquidos",
+                            hasAlerts: false
+                        }
+                    ]
+                },
+                {
+                    id: (Date.now() + 1).toString(),
+                    name: "Carlos Rodríguez Pérez",
+                    age: 15,
+                    sex: "M",
+                    bed: "Cama 8",
+                    monitoringInterval: 1,
+                    createdAt: new Date(now - 3 * 60 * 60 * 1000).toISOString(),
+                    lastCheck: new Date(now - 45 * 60 * 1000).toISOString(),
+                    initialNotes: "Paciente pediátrico, dengue confirmado por NS1",
+                    hasAlerts: false,
+                    checks: [
+                        {
+                            timestamp: new Date(now - 3 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Ingreso a sala. Estable",
+                            hasAlerts: false
+                        },
+                        {
+                            timestamp: new Date(now - 2 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Sin cambios. Hidratación oral adecuada",
+                            hasAlerts: false
+                        },
+                        {
+                            timestamp: new Date(now - 1 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Afebril. PA estable",
+                            hasAlerts: false
+                        },
+                        {
+                            timestamp: new Date(now - 45 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Continúa estable, sin signos de alarma",
+                            hasAlerts: false
+                        }
+                    ]
+                },
+                {
+                    id: (Date.now() + 2).toString(),
+                    name: "Ana Martínez Silva",
+                    age: 42,
+                    sex: "F",
+                    bed: "Cama 15",
+                    monitoringInterval: 2,
+                    createdAt: new Date(now - 5 * 60 * 60 * 1000).toISOString(),
+                    lastCheck: new Date(now - 2 * 60 * 60 * 1000).toISOString(),
+                    initialNotes: "Comorbilidad: HTA controlada",
+                    hasAlerts: true,
+                    checks: [
+                        {
+                            timestamp: new Date(now - 5 * 60 * 60 * 1000).toISOString(),
+                            signs: ["Hepatomegalia >2cm"],
+                            notes: "Hepatomegalia palpable 3cm bajo reborde costal",
+                            hasAlerts: true
+                        },
+                        {
+                            timestamp: new Date(now - 3 * 60 * 60 * 1000).toISOString(),
+                            signs: ["Hepatomegalia >2cm", "Letargia o irritabilidad"],
+                            notes: "Paciente somnolienta, difícil de despertar",
+                            hasAlerts: true
+                        },
+                        {
+                            timestamp: new Date(now - 2 * 60 * 60 * 1000).toISOString(),
+                            signs: ["Hepatomegalia >2cm"],
+                            notes: "Mejoría del estado de alerta. Persiste hepatomegalia",
+                            hasAlerts: true
+                        }
+                    ]
+                },
+                {
+                    id: (Date.now() + 3).toString(),
+                    name: "Pedro González Ramírez",
+                    age: 35,
+                    sex: "M",
+                    bed: "Cama 20",
+                    monitoringInterval: 2,
+                    createdAt: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
+                    lastCheck: new Date(now - 3.5 * 60 * 60 * 1000).toISOString(),
+                    initialNotes: "Paciente con dengue día 5 de enfermedad",
+                    hasAlerts: false,
+                    checks: [
+                        {
+                            timestamp: new Date(now - 4 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Ingreso: PA 120/80, FC 76, afebril",
+                            hasAlerts: false
+                        },
+                        {
+                            timestamp: new Date(now - 3.5 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Sin cambios significativos. Buena diuresis",
+                            hasAlerts: false
+                        }
+                    ]
+                },
+                {
+                    id: (Date.now() + 4).toString(),
+                    name: "Laura Fernández Torres",
+                    age: 19,
+                    sex: "F",
+                    bed: "Cama 3",
+                    monitoringInterval: 1,
+                    createdAt: new Date(now - 2 * 60 * 60 * 1000).toISOString(),
+                    lastCheck: new Date(now - 30 * 60 * 1000).toISOString(),
+                    initialNotes: "Embarazo 28 semanas, dengue confirmado",
+                    hasAlerts: false,
+                    checks: [
+                        {
+                            timestamp: new Date(now - 2 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Ingreso. Monitoreo fetal normal",
+                            hasAlerts: false
+                        },
+                        {
+                            timestamp: new Date(now - 1 * 60 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Estable. FCF: 140 lpm",
+                            hasAlerts: false
+                        },
+                        {
+                            timestamp: new Date(now - 30 * 60 * 1000).toISOString(),
+                            signs: [],
+                            notes: "Continúa estable. Sin contracciones",
+                            hasAlerts: false
+                        }
+                    ]
+                }
+            ];
+
+            // Guardar en localStorage
+            localStorage.setItem('dengue_patients', JSON.stringify(demoPatients));
+            
+            // Redirigir a la aplicación
+            window.location.href = 'dengue-monitor.html';
+        }
+
+        function loadClean() {
+            // Limpiar localStorage
+            localStorage.removeItem('dengue_patients');
+            
+            // Redirigir a la aplicación
+            window.location.href = 'dengue-monitor.html';
+        }
+    </script>
+</body>
+</html>
