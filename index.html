@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitor Dengue - Inicio</title>
+    <title>Monitor Dengue v2.0 - Inicio</title>
     <style>
         * {
             margin: 0;
@@ -39,6 +39,17 @@
             color: #dc2626;
             font-size: 42px;
             margin-bottom: 10px;
+        }
+
+        .version-badge {
+            display: inline-block;
+            background: #16a34a;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
         }
 
         .subtitle {
@@ -183,6 +194,16 @@
             font-weight: 600;
         }
 
+        .new-badge {
+            background: #16a34a;
+            color: white;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 10px;
+            font-weight: bold;
+            margin-left: 5px;
+        }
+
         @media (max-width: 768px) {
             .header-card {
                 padding: 25px;
@@ -208,47 +229,87 @@
             font-size: 14px;
             opacity: 0.9;
         }
+
+        .changelog {
+            background: #d1fae5;
+            border-left: 4px solid #16a34a;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+
+        .changelog h4 {
+            color: #065f46;
+            margin-bottom: 10px;
+        }
+
+        .changelog ul {
+            margin-left: 20px;
+            color: #065f46;
+        }
+
+        .changelog li {
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
     <div class="main-container">
         <div class="header-card">
-            <h1>🏥 Monitor Dengue</h1>
+            <h1>
+                🏥 Monitor Dengue
+                <span class="version-badge">v2.0</span>
+            </h1>
             <p class="subtitle">Sistema de Monitoreo para Pacientes con Signos de Alarma</p>
             <div>
                 <span class="badge">PWA Offline</span>
-                <span class="badge">Persistencia 48h</span>
-                <span class="badge">14-16 Pacientes</span>
-                <span class="badge">Monitoreo Horario</span>
+                <span class="badge">Memoria Permanente</span>
+                <span class="badge">Hasta 24 Pacientes</span>
+                <span class="badge">Antropometría<span class="new-badge">NUEVO</span></span>
+                <span class="badge">Signos Vitales<span class="new-badge">NUEVO</span></span>
+            </div>
+
+            <div class="changelog">
+                <h4>🆕 ¿Qué hay de nuevo en v2.0?</h4>
+                <ul>
+                    <li>✅ Datos permanentes (sin límite de 48h)</li>
+                    <li>✅ Importación de datos exportados</li>
+                    <li>✅ Capacidad ampliada: 24 pacientes</li>
+                    <li>✅ Antropometría completa con IMC y SC calculados</li>
+                    <li>✅ Signos vitales completos en cada chequeo</li>
+                    <li>✅ Campo de hidratación (ml/kg/h)</li>
+                    <li>✅ Edición de fichas y evaluaciones</li>
+                    <li>✅ Vista de ficha completa del paciente</li>
+                </ul>
             </div>
         </div>
 
         <div class="resources-grid">
-            <div class="resource-card" onclick="window.location.href='dengue-monitor.html'">
+            <div class="resource-card" onclick="window.location.href='dengue-monitor-v2.html'">
                 <div class="resource-icon">🚀</div>
                 <div class="resource-title">Iniciar Aplicación</div>
                 <div class="resource-desc">
-                    Comienza a monitorear pacientes inmediatamente. Aplicación lista para usar en guardia.
+                    Versión 2.0 con todas las mejoras. Lista para usar en guardia con datos permanentes y nuevas funcionalidades.
                 </div>
-                <a href="dengue-monitor.html" class="resource-link">Abrir Monitor</a>
-            </div>
-
-            <div class="resource-card" onclick="window.location.href='dengue-monitor-demo.html'">
-                <div class="resource-icon">🎯</div>
-                <div class="resource-title">Ver Demo</div>
-                <div class="resource-desc">
-                    Explora la aplicación con 5 pacientes de ejemplo y chequeos precargados.
-                </div>
-                <a href="dengue-monitor-demo.html" class="resource-link secondary">Cargar Demo</a>
+                <a href="dengue-monitor-v2.html" class="resource-link">Abrir Monitor v2.0</a>
             </div>
 
             <div class="resource-card" onclick="window.location.href='guia-rapida-dengue.html'">
                 <div class="resource-icon">📖</div>
                 <div class="resource-title">Guía Rápida</div>
                 <div class="resource-desc">
-                    Instrucciones paso a paso, mejores prácticas y solución de problemas.
+                    Instrucciones paso a paso, mejores prácticas y solución de problemas. Actualizada para v2.0.
                 </div>
                 <a href="guia-rapida-dengue.html" class="resource-link secondary">Ver Guía</a>
+            </div>
+
+            <div class="resource-card" onclick="window.open('CAMBIOS-V2.md', '_blank')">
+                <div class="resource-icon">📋</div>
+                <div class="resource-title">Notas de Versión</div>
+                <div class="resource-desc">
+                    Listado completo de todos los cambios, mejoras y nuevas funcionalidades de la v2.0.
+                </div>
+                <a href="CAMBIOS-V2.md" target="_blank" class="resource-link secondary">Ver Cambios</a>
             </div>
 
             <div class="resource-card" onclick="window.open('README-dengue-monitor.md', '_blank')">
@@ -262,27 +323,51 @@
         </div>
 
         <div class="info-box">
-            <h3>✨ Características Principales</h3>
+            <h3>✨ Características Principales v2.0</h3>
             <div class="features">
                 <div class="feature">
+                    <div class="feature-icon">💾</div>
+                    <div class="feature-text">Memoria<br>Permanente<span class="new-badge">NUEVO</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📤</div>
+                    <div class="feature-text">Importar<br>Datos<span class="new-badge">NUEVO</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-text">24<br>Pacientes<span class="new-badge">NUEVO</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📏</div>
+                    <div class="feature-text">Antropometría<br>Completa<span class="new-badge">NUEVO</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🩺</div>
+                    <div class="feature-text">Signos<br>Vitales<span class="new-badge">NUEVO</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💧</div>
+                    <div class="feature-text">Velocidad<br>Hidratación<span class="new-badge">NUEVO</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">✏️</div>
+                    <div class="feature-text">Editar<br>Todo<span class="new-badge">NUEVO</span></div>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📋</div>
+                    <div class="feature-text">Ficha<br>Completa<span class="new-badge">NUEVO</span></div>
+                </div>
+                <div class="feature">
                     <div class="feature-icon">⏱️</div>
-                    <div class="feature-text">Monitoreo<br>Horario/Bihorario</div>
+                    <div class="feature-text">Monitoreo<br>Horario</div>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">⚠️</div>
                     <div class="feature-text">8 Signos de<br>Alarma</div>
                 </div>
                 <div class="feature">
-                    <div class="feature-icon">📝</div>
-                    <div class="feature-text">Notas<br>Clínicas</div>
-                </div>
-                <div class="feature">
                     <div class="feature-icon">📊</div>
                     <div class="feature-text">Informes<br>Completos</div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">💾</div>
-                    <div class="feature-text">Almacenamiento<br>Local</div>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">📱</div>
@@ -294,14 +379,15 @@
         <div class="info-box">
             <h3>🎯 ¿Qué Puedes Hacer?</h3>
             <ul>
-                <li>Registrar y monitorear hasta 16 pacientes simultáneamente</li>
-                <li>Realizar chequeos cada 1-4 horas según la gravedad</li>
-                <li>Documentar los 8 signos de alarma del dengue</li>
-                <li>Agregar notas clínicas detalladas en cada evaluación</li>
-                <li>Ver historial completo de cada paciente</li>
-                <li>Generar informes individuales descargables</li>
-                <li>Recibir alertas de chequeos vencidos</li>
-                <li>Exportar datos para backup o análisis</li>
+                <li>Registrar hasta 24 pacientes simultáneamente con datos completos</li>
+                <li>Antropometría: peso, talla, IMC y superficie corporal (calculados automáticamente)</li>
+                <li>Historia: fechas de inicio de síntomas y fiebre, signo de alarma de ingreso</li>
+                <li>Signos vitales completos: Tax, FC, FR, TA, PAM, SatO₂, hidratación</li>
+                <li>Ver ficha completa de cada paciente con toda su información organizada</li>
+                <li>Editar fichas de pacientes y evaluaciones en cualquier momento</li>
+                <li>Los datos persisten indefinidamente (hasta que los borres manualmente)</li>
+                <li>Importar datos exportados previamente para restaurar backups</li>
+                <li>Generar informes individuales detallados descargables</li>
                 <li>Trabajar completamente offline después de la primera carga</li>
             </ul>
         </div>
@@ -311,14 +397,14 @@
             <ul style="color: #991b1b;">
                 <li style="border-color: #fecaca;">Esta herramienta es de APOYO, no sustituye el juicio clínico</li>
                 <li style="border-color: #fecaca;">Los datos se almacenan SOLO en tu dispositivo local</li>
-                <li style="border-color: #fecaca;">Se eliminan automáticamente después de 48 horas sin actualización</li>
-                <li style="border-color: #fecaca;">Realiza backups periódicos usando la función de exportación</li>
+                <li style="border-color: #fecaca;">Ahora son permanentes, pero aún así haz backups periódicos</li>
+                <li style="border-color: #fecaca;">Usa "Exportar" regularmente para guardar respaldos</li>
                 <li style="border-color: #fecaca;">Verifica las dosis y protocolos con fuentes oficiales</li>
             </ul>
         </div>
 
         <footer>
-            <p><strong>Monitor Dengue</strong> - Desarrollado para práctica preprofesional</p>
+            <p><strong>Monitor Dengue v2.0</strong> - Desarrollado para práctica preprofesional</p>
             <p>Estudiantes de Medicina y Profesionales de Salud</p>
             <p style="margin-top: 10px; font-size: 12px;">Octubre 2025 | Herramienta Educativa</p>
         </footer>
@@ -329,39 +415,41 @@
         window.addEventListener('DOMContentLoaded', () => {
             const stored = localStorage.getItem('dengue_patients');
             if (stored) {
-                const patients = JSON.parse(stored);
-                if (patients.length > 0) {
-                    // Mostrar notificación de datos existentes
-                    const notification = document.createElement('div');
-                    notification.style.cssText = `
-                        position: fixed;
-                        top: 20px;
-                        right: 20px;
-                        background: #16a34a;
-                        color: white;
-                        padding: 15px 20px;
-                        border-radius: 10px;
-                        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-                        z-index: 1000;
-                        animation: slideIn 0.3s ease;
-                    `;
-                    notification.innerHTML = `
-                        <strong>📊 Datos Guardados</strong><br>
-                        <span style="font-size: 14px;">Tienes ${patients.length} paciente(s) en seguimiento</span>
-                    `;
-                    document.body.appendChild(notification);
+                try {
+                    const patients = JSON.parse(stored);
+                    if (patients.length > 0) {
+                        const notification = document.createElement('div');
+                        notification.style.cssText = `
+                            position: fixed;
+                            top: 20px;
+                            right: 20px;
+                            background: #16a34a;
+                            color: white;
+                            padding: 15px 20px;
+                            border-radius: 10px;
+                            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+                            z-index: 1000;
+                            animation: slideIn 0.3s ease;
+                        `;
+                        notification.innerHTML = `
+                            <strong>📊 Datos Guardados</strong><br>
+                            <span style="font-size: 14px;">Tienes ${patients.length} paciente(s) en seguimiento</span>
+                        `;
+                        document.body.appendChild(notification);
 
-                    // Remover después de 5 segundos
-                    setTimeout(() => {
-                        notification.style.opacity = '0';
-                        notification.style.transition = 'opacity 0.3s ease';
-                        setTimeout(() => notification.remove(), 300);
-                    }, 5000);
+                        setTimeout(() => {
+                            notification.style.opacity = '0';
+                            notification.style.transition = 'opacity 0.3s ease';
+                            setTimeout(() => notification.remove(), 300);
+                        }, 5000);
+                    }
+                } catch (e) {
+                    console.error('Error al leer datos:', e);
                 }
             }
         });
 
-        // Animación de entrada
+        // Animación
         const style = document.createElement('style');
         style.textContent = `
             @keyframes slideIn {
