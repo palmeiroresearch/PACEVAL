@@ -1,5 +1,5 @@
 // Service Worker para Monitor Dengue
-const CACHE_VERSION = 'dengue-monitor-v1.0.0';
+const CACHE_VERSION = 'dengue-monitor-v2.0.0';
 const CACHE_NAME = `dengue-monitor-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
