@@ -4,7 +4,7 @@ const CACHE_NAME = `dengue-monitor-${CACHE_VERSION}`;
 
 const STATIC_ASSETS = [
   './',
-  './dengue-monitor.html',
+  './dengue-monitor-v2.html',
   './manifest-dengue.json'
 ];
 
@@ -55,7 +55,7 @@ self.addEventListener('fetch', event => {
       })
       .catch(() => {
         // Si falla, intentar servir la página principal desde caché
-        return caches.match('./dengue-monitor.html');
+        return caches.match('./dengue-monitor-v2.html');
       })
   );
 });
