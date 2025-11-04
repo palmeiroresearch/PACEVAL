@@ -2,7 +2,7 @@
   "name": "Monitor Dengue - Signos de Alarma",
   "short_name": "Monitor Dengue",
   "description": "Aplicación para monitoreo horario/bihorario de pacientes con sospecha de dengue con signos de alarma",
-  "start_url": "./dengue-monitor.html",
+  "start_url": "./dengue-monitor-v2.html",
   "display": "standalone",
   "background_color": "#dc2626",
   "theme_color": "#991b1b",
